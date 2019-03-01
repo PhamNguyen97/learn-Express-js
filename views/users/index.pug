@@ -1,11 +1,15 @@
-h1 Users
-a(href="/users/create") New
-form(action="/users/search", method ="GET")
-	input(type="text",name = "q")
-	button Search
-ul
-	each val in users
-		li
-			span=val.name
-			span &nbsp;
-			a(href='/users/'+val.id) View
+
+extends ../layout/common
+
+block content
+	h1 Users
+	a(href="/users/create") New
+	form(action="/users/search", method ="GET")
+		input(type="text",name = "q")
+		button Search
+	ul
+		each val in users
+			li
+				span=val.name
+				span &nbsp;
+				a(href='/users/'+val.id) View
