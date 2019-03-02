@@ -21,7 +21,7 @@ app.set('view engine', 'pug');
 app.get('/',function(request, respond){
 	respond.render('index');
 });
-
+app.use(express.static('public'));
 app.use('/users',userRoute);
 app.listen(port,function(){
 	console.log('server start @ port'+ port);

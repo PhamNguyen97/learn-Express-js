@@ -2,5 +2,15 @@ html
 	head
 		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
 
+	
 	body
-		block content
+		nav.navbar.navbar-expand-lg.navbar-light.bg-light
+			img(class="pr-4",src='/images/logo.png',height="50rem")
+			#navbarNav.collapse.navbar-collapse
+				ul.navbar-nav
+					li.nav-item
+						a.nav-link(href='/') Home 
+					li.nav-item
+						a.nav-link(href='/users') Users
+		.container.pt-5
+			block content
