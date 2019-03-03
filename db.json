@@ -1,34 +1,11 @@
 {
   "users": [
     {
-      "name": "quang",
-      "id": "UZl9IQXCK"
-    },
-    {
-      "name": "aasdasd",
-      "id": "suTWMDwki"
-    },
-    {
-      "name": "a",
-      "id": "knU2LQLQ8"
-    },
-    {
-      "name": "DNguyen",
-      "id": "Bu9mWQ3fS"
-    },
-    {
-      "name": "",
-      "id": "Vd5ip1i_N"
-    },
-    {
-      "name": "a",
-      "phone": "asdad",
-      "id": "9PLhVTo8w"
-    },
-    {
-      "name": "Pa",
-      "phone": "109832",
-      "id": "OTFYOwVtK"
+      "name": "Nguyen Pham",
+      "phone": "1234567",
+      "id": "B5AggnQ7t",
+      "email": "quocnguyenkh@gmail.com",
+      "password": "1234565"
     }
   ]
 }

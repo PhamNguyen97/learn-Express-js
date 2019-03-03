@@ -24,6 +24,7 @@ module.exports.search = function(request,respond){
 	respond.render('users/index',{users:matchUsers});
 };
 module.exports.create = function(req,res){
+	console.log(req.cookies);
 	res.render('users/create');
 };
 
