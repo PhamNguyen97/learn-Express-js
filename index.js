@@ -1,3 +1,7 @@
+require('dotenv').config();
+
+console.log(process.env.SESSION_SECRET);
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var shortid = require('shortid');
@@ -13,7 +17,7 @@ var app = express();
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(cookieParser('aslkaod powepolkxzcn'));
+app.use(cookieParser(process.env.SESSION_SECRET));
 port = 3000;
 
 
