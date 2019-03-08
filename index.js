@@ -10,6 +10,7 @@ var cookieParser = require('cookie-parser');
 
 var userRoute = require('./routes/users.route');
 var authenRoute = require('./routes/authen.route');
+var productsRoute = require('./routes/products.route');
 
 var authenMiddleware = require('./middlewares/authen.middleware');
 
@@ -31,6 +32,7 @@ app.get('/',function(request, respond){
 app.use(express.static('public'));
 app.use('/users',authenMiddleware.requireAuthen,userRoute);
 app.use('/authen',authenRoute);
+app.use('/products',productsRoute);
 app.listen(port,function(){
 	console.log('server start @ port'+ port);
 });

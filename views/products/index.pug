@@ -1,0 +1,54 @@
+extends ../layout/common
+
+block content
+	h1 Products
+	.container
+		.row.no-gutters.d-flex.justify-content-center
+			each product in Products
+				.col.col-sm-6.col-md-4.col-lg-3.col-xl-2.p-2
+					.card
+						.card-img-top(style='display: block; padding-bottom: 60%; background-image:url('+product.image+'); background-size:cover; background-repeat: no-repeat; background-position:bottom')
+						//- img.card-img-top(src=Products.image, alt='Card image cap')
+						.card-body.position-relative(style='height:10rem')
+							h5.card-title.text-truncate(style='height:20%')=product.name
+							p.card-text(style='overflow:hidden;height: 70%')=product.discription
+							.overlay.position-absolute.p-1.m-1(style='width: 95%;bottom: 0;left:0;background: linear-gradient(180deg, rgba(255,255,255,0.010241596638655426) 0%, rgba(255,255,255,0.8645833333333334) 19%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);')
+								a.btn.btn-primary(href='#') About
+	.container.d-flex.mt-4.justify-content-center
+		nav(aria-label='...')
+			ul.pagination
+
+				if currentPage==1
+					li.page-item.disabled
+						a.page-link(href='/products/'+previousPage) Previous
+					li.page-item.active
+						span.page-link=currentPage
+						span.sr-only (current)
+					li.page-item
+						a.page-link(href='/products/'+nextPage)=nextPage
+					li.page-item
+						a.page-link(href='/products/'+nextPage) Next
+				else
+					if currentPage==numPage
+						li.page-item
+							a.page-link(href='/products/'+previousPage) Previous
+						li.page-item
+							a.page-link(href='/products/'+previousPage)=previousPage							
+						li.page-item.active
+							span.page-link=currentPage
+							span.sr-only (current)
+						li.page-item.disabled
+							a.page-link(href='/products/'+nextPage) Next
+					else
+						li.page-item
+							a.page-link(href='/products/'+previousPage) Previous
+						li.page-item
+							a.page-link(href='/products/'+previousPage)=previousPage
+						li.page-item.active
+							span.page-link=currentPage
+							span.sr-only (current)
+						li.page-item
+							a.page-link(href='/products/'+nextPage)=nextPage
+						li.page-item
+							a.page-link(href='/products/'+nextPage) Next
+
