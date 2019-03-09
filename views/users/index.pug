@@ -10,12 +10,15 @@ block content
 			button.btn.btn-primary Search
 	table.table
 		tr
+			th Avatar
 			th Name
 			th Phone
 			th Action
 
 		each user in users
 			tr
+				td
+					img(src=user.avatar?user.avatar:'/images/img-placeholder.jpg',width='32')
 				td=user.name
 				td=user.phone
 				td

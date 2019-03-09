@@ -31,14 +31,14 @@ module.exports.create = function(req,res){
 module.exports.postCreate=function(req,res){
 	
 	req.body.id = shortid.generate();
-
+	req.body.avatar = req.file.path.split('/').slice(1).join('/');
 	userWrite(req.body);
 	res.redirect('/users');
 };
 
 module.exports.get= function(req,res){
 	var id = req.params.id;
-	console.log(req.params);
+	// console.log(req.params);
 
 	var user = db.get('users').find({id: id}).value();
 	// console.log(user);
