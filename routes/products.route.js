@@ -4,6 +4,7 @@ var controller = require('../controllers/products.controller');
 var router = express.Router(); 
 
 router.get('/',controller.index);
-router.get('/:id',controller.page);
+router.get('/page',controller.page);
+// router.get('/:id',controller.);
 
 module.exports = router;

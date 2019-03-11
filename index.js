@@ -11,14 +11,18 @@ var cookieParser = require('cookie-parser');
 var userRoute = require('./routes/users.route');
 var authenRoute = require('./routes/authen.route');
 var productsRoute = require('./routes/products.route');
+var cartRoute = require('./routes/cart.route');
 
 var authenMiddleware = require('./middlewares/authen.middleware');
+var sessionMiddleware = require('./middlewares/session.middleware');
+var cartsMiddleware = require('./middlewares/carts.middleware');
 
 var app = express();
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(sessionMiddleware.session,cartsMiddleware);
 port = 3000;
 
 
@@ -33,6 +37,7 @@ app.use(express.static('public'));
 app.use('/users',authenMiddleware.requireAuthen,userRoute);
 app.use('/authen',authenRoute);
 app.use('/products',productsRoute);
+app.use('/cart',cartRoute);
 app.listen(port,function(){
 	console.log('server start @ port'+ port);
 });

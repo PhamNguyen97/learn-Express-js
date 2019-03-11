@@ -645,5 +645,16 @@
       "name": "Compound - Raspberry",
       "discription": "ac nulla sed vel enim sit amet nunc viverra dapibus nulla suscipit"
     }
+  ],
+  "session": [
+    {
+      "id": "ZJwe_R_08",
+      "cart": [
+        {
+          "cartName": "a4d8fa6c-1c14-4bd3-bb80-8f8b2e495db3",
+          "number": 1
+        }
+      ]
+    }
   ]
 }

@@ -3,6 +3,7 @@ extends ../layout/common
 block content
 	
 	.container
+		numCarts
 		h1.p-2 Products
 		.row.no-gutters.d-flex.justify-content-center
 			each product in Products
@@ -14,42 +15,42 @@ block content
 							h5.card-title.text-truncate(style='height:20%')=product.name
 							p.card-text(style='overflow:hidden;height: 70%')=product.discription
 							.overlay.position-absolute.p-1.m-1(style='width: 95%;bottom: 0;left:0;background: linear-gradient(180deg, rgba(255,255,255,0.010241596638655426) 0%, rgba(255,255,255,0.8645833333333334) 19%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);')
-								a.btn.btn-primary(href='#') About
+								a.btn.btn-primary(href='/cart/add/'+product.id) Buy
 	.container.d-flex.mt-4.justify-content-center
 		nav(aria-label='...')
 			ul.pagination
 
 				if currentPage==1
 					li.page-item.disabled
-						a.page-link(href='/products/'+previousPage) Previous
+						a.page-link(href='/products/page?q='+previousPage) Previous
 					li.page-item.active
 						span.page-link=currentPage
 						span.sr-only (current)
 					li.page-item
-						a.page-link(href='/products/'+nextPage)=nextPage
+						a.page-link(href='/products/page?q='+nextPage)=nextPage
 					li.page-item
-						a.page-link(href='/products/'+nextPage) Next
+						a.page-link(href='/products/page?q='+nextPage) Next
 				else
 					if currentPage==numPage
 						li.page-item
-							a.page-link(href='/products/'+previousPage) Previous
+							a.page-link(href='/products/page?q='+previousPage) Previous
 						li.page-item
-							a.page-link(href='/products/'+previousPage)=previousPage							
+							a.page-link(href='/products/page?q='+previousPage)=previousPage							
 						li.page-item.active
 							span.page-link=currentPage
 							span.sr-only (current)
 						li.page-item.disabled
-							a.page-link(href='/products/'+nextPage) Next
+							a.page-link(href='/products/page?q='+nextPage) Next
 					else
 						li.page-item
-							a.page-link(href='/products/'+previousPage) Previous
+							a.page-link(href='/products/page?q='+previousPage) Previous
 						li.page-item
-							a.page-link(href='/products/'+previousPage)=previousPage
+							a.page-link(href='/products/page?q='+previousPage)=previousPage
 						li.page-item.active
 							span.page-link=currentPage
 							span.sr-only (current)
 						li.page-item
-							a.page-link(href='/products/'+nextPage)=nextPage
+							a.page-link(href='/products/page?q='+nextPage)=nextPage
 						li.page-item
-							a.page-link(href='/products/'+nextPage) Next
+							a.page-link(href='/products/page?q='+nextPage) Next
 
