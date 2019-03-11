@@ -23,34 +23,28 @@ block content
 				if currentPage==1
 					li.page-item.disabled
 						a.page-link(href='/products/page?q='+previousPage) Previous
-					li.page-item.active
+				else
+					li.page-item
+						a.page-link(href='/products/page?q='+previousPage) Previous
+
+				if previousPage!=0
+					li.page-item
+						a.page-link(href='/products/page?q='+previousPage)=previousPage	
+
+				li.page-item.active
 						span.page-link=currentPage
 						span.sr-only (current)
+
+				if currentPage!=numPage
 					li.page-item
 						a.page-link(href='/products/page?q='+nextPage)=nextPage
-					li.page-item
-						a.page-link(href='/products/page?q='+nextPage) Next
+
+				if currentPage==numPage
+					li.page-item.disabled
+							a.page-link(href='/products/page?q='+nextPage) Next
 				else
-					if currentPage==numPage
-						li.page-item
-							a.page-link(href='/products/page?q='+previousPage) Previous
-						li.page-item
-							a.page-link(href='/products/page?q='+previousPage)=previousPage							
-						li.page-item.active
-							span.page-link=currentPage
-							span.sr-only (current)
-						li.page-item.disabled
+					li.page-item
 							a.page-link(href='/products/page?q='+nextPage) Next
-					else
-						li.page-item
-							a.page-link(href='/products/page?q='+previousPage) Previous
-						li.page-item
-							a.page-link(href='/products/page?q='+previousPage)=previousPage
-						li.page-item.active
-							span.page-link=currentPage
-							span.sr-only (current)
-						li.page-item
-							a.page-link(href='/products/page?q='+nextPage)=nextPage
-						li.page-item
-							a.page-link(href='/products/page?q='+nextPage) Next
+
+				
 

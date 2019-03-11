@@ -2,10 +2,14 @@ require('dotenv').config();
 
 console.log(process.env.SESSION_SECRET);
 
+var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URL);
+console.log(process.env.MONGO_URL);
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var shortid = require('shortid');
-var db = require('./db');
+// var db = require('./db');
 var cookieParser = require('cookie-parser');
 
 var userRoute = require('./routes/users.route');

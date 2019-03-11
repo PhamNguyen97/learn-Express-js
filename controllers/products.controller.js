@@ -1,7 +1,11 @@
-var db = require('../db');
+// var db = require('../db');
 
-var pageRender = function({req,res,prodPerPage=12,currentPage=1,numCarts = 1}={}){
-	var allProducts = db.get('products').value();
+var Products = require('../models/products.model');
+
+var pageRender = async function({req,res,prodPerPage=12,currentPage=1,numCarts = 1}={}){
+	// var allProducts = db.get('products').value();
+
+	var allProducts = await Products.find();
 	var numPage = Math.ceil(allProducts.length/prodPerPage);
 	res.render('products/index',{
 		'Products':allProducts.slice((currentPage-1)*prodPerPage,currentPage*prodPerPage),
@@ -13,14 +17,14 @@ var pageRender = function({req,res,prodPerPage=12,currentPage=1,numCarts = 1}={}
 	});
 } 
 
-module.exports.index = function(req,res){
-	var obj = {req,res,prodPerPage:12, currentPage: 1,numCarts:res.locals.numCarts};
+module.exports.index = async function(req,res){
+	var obj = {req,res,prodPerPage:4, currentPage: 1,numCarts:res.locals.numCarts};
 	pageRender(obj);
 }
 
-module.exports.page = function(req,res){
+module.exports.page = async function(req,res){
 	var currentPage = req.query.q;
-	var obj = {req,res,prodPerPage:12,currentPage:currentPage,numCarts:res.locals.numCarts};
+	var obj = {req,res,prodPerPage:4,currentPage:currentPage,numCarts:res.locals.numCarts};
 	pageRender(obj);
 
 }
