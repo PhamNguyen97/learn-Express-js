@@ -22,7 +22,7 @@ var app = express();
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(cookieParser(process.env.SESSION_SECRET));
-app.use(sessionMiddleware.session,cartsMiddleware);
+app.use(sessionMiddleware.session);
 port = 3000;
 
 
@@ -36,7 +36,7 @@ app.get('/',function(request, respond){
 app.use(express.static('public'));
 app.use('/users',authenMiddleware.requireAuthen,userRoute);
 app.use('/authen',authenRoute);
-app.use('/products',productsRoute);
+app.use('/products',cartsMiddleware,productsRoute);
 app.use('/cart',cartRoute);
 app.listen(port,function(){
 	console.log('server start @ port'+ port);

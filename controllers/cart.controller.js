@@ -10,16 +10,13 @@ module.exports.add = function(req,res){
 		return;
 	}
 
+	// var currentCarts = db.get('session').find({id:sessionId}).get('cart').value();
+
+	// if (!currentCarts)
+	// 	db.get('session').find({id:sessionId}).set('cart',[]).write();
+
 	var currentCarts = db.get('session').find({id:sessionId}).get('cart').value();
-
-	if (!currentCarts)
-		db.get('session').find({id:sessionId}).set('cart',[]).write();
-
-	currentCarts = db.get('session').find({id:sessionId}).get('cart').value();
-	if (cartId in currentCarts)
-		db.get('session').find({id:sessionId}).get('cart').find({cartName:cartId}).update({'number':2}).write();
-	else
-		db.get('session').find({id:sessionId}).get('cart').push({'cartName':cartId,'number':1}).write();
+	db.get('session').find({id:sessionId}).set('cart.'+cartId,cartId in currentCarts ? currentCarts[cartId]+1:1).write();
 	// res.render('products/index')
 	res.redirect(req.get('referer'));
 

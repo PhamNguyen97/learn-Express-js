@@ -14,13 +14,13 @@ var pageRender = function({req,res,prodPerPage=12,currentPage=1,numCarts = 1}={}
 } 
 
 module.exports.index = function(req,res){
-	var obj = {req,res,prodPerPage:12, currentPage: 1};
+	var obj = {req,res,prodPerPage:12, currentPage: 1,numCarts:res.locals.numCarts};
 	pageRender(obj);
 }
 
 module.exports.page = function(req,res){
 	var currentPage = req.query.q;
-	var obj = {req,res,prodPerPage:12,currentPage:currentPage};
+	var obj = {req,res,prodPerPage:12,currentPage:currentPage,numCarts:res.locals.numCarts};
 	pageRender(obj);
 
 }
