@@ -24,7 +24,9 @@ module.exports.search = async function(request,respond){
 };
 module.exports.create = async function(req,res){
 	console.log(req.cookies);
-	res.render('users/create');
+	res.render('users/create',{
+		csrfToken: req.csrfToken()
+	});
 };
 
 module.exports.postCreate= async function(req,res){

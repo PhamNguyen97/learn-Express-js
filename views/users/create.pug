@@ -9,6 +9,7 @@ block content
 
 
 	form(action="/users/create",method = "POST",enctype="multipart/form-data")
+		input(type="hidden", name = "_csrf", value=csrfToken)
 		.form-group
 			label(for="name") Name
 			input#name.form-control(name = "name" type="text", value=values?values.name?values.name:"":"")

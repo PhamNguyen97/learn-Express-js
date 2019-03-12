@@ -10,6 +10,8 @@ block content
 
 
 	form(action="/authen/login",method = "POST")
+		//- .form-group(type = "hidden")
+		input(type="hidden", name= "_csrf", value=csrfToken)
 		.form-group
 			label(for="email") Email
 			input#email.form-control(name = "email" type="text", value=values?values.email?values.email:"":"")

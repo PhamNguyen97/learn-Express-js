@@ -4,7 +4,9 @@ var Users = require('../models/users.model');
 
 
 module.exports.login = function(req,res,next){
-	res.render('authen/login');
+	res.render('authen/login',{
+		csrfToken: req.csrfToken()
+	});
 };
 
 
@@ -17,7 +19,8 @@ module.exports.postLogin = async function(req,res,next){
 	if (!user){
 		res.render('authen/login',{
 			errors: ['User dost not exist'],
-			values: req.body		
+			values: req.body,
+			csrfToken: req.csrfToken()	
 		});
 		return;
 	}
@@ -26,7 +29,8 @@ module.exports.postLogin = async function(req,res,next){
 	if (user.password!==hashedPassword){
 		res.render('authen/login',{
 			errors:['Wrong password'],
-			values: req.body
+			values: req.body,
+			csrfToken: req.csrfToken()
 		});
 	}
 	res.cookie('userId',user.id,{signed: true});
